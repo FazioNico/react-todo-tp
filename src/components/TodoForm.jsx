@@ -17,6 +17,6 @@ export function TodoForm() {
         name="title" 
         onKeyUp={(event)=> setTodoTitle(event.target.value)} />
       <br/>
-      <button onClick={()=> handleAddTodo()}>add</button>
+      <button onClick={()=> addToFirebase(todoTitle)}>add</button>
     </div>);
 }

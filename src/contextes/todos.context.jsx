@@ -21,7 +21,7 @@ export function TodosProvider({ children }) {
   }, []);
 
   return (
-    <TodosCtx.Provider value={{ todosList, addToFirebase }}>
+    <TodosCtx.Provider value={{ todosList, addToFirebase, }}>
       {children}
     </TodosCtx.Provider>
   );
