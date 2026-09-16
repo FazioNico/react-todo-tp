@@ -1,12 +1,16 @@
+import { useContext } from 'react'
 import { TodoForm } from './components/TodoForm'
 import { TodosList } from './components/TodosList'
-import { signinWithGoogle } from './services/firebase/firebase'
+import { UserCtx } from './contextes/user.context';
 
 function App() {
+  const { currentUser, signIn, logOut } = useContext(UserCtx);
 
   return (
     <>
-      <button onClick={()=> signinWithGoogle()}>auth with Google</button>
+      <p>currentUser: {currentUser?.displayName || 'no user'}</p>
+      <button onClick={()=> signIn()}>auth with Google</button>
+      <button onClick={()=> logOut()}>logout</button>
       <TodoForm />
       <TodosList />
     </>
