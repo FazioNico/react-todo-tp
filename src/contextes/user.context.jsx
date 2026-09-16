@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { auth, signinWithGoogle } from "../services/firebase/firebase";
+import { auth, signinWithEmailAndPass, signinWithGoogle } from "../services/firebase/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 
 export const UserCtx = createContext(null);
@@ -17,11 +17,13 @@ export function UserProvider({children}) {
     await signinWithGoogle();
   }
 
+  const signInWithEmail = (email, pass) => signinWithEmailAndPass(email, pass)
+
   const logOut = () => {
     signOut(auth);
   }
 
-  return <UserCtx.Provider value={{currentUser, signIn, logOut }} >
+  return <UserCtx.Provider value={{currentUser, signIn, logOut, signInWithEmail }} >
     {children}
   </UserCtx.Provider>
 }
