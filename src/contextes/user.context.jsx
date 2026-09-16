@@ -1,15 +1,18 @@
 import { createContext, useEffect, useState } from "react";
-import { auth, signinWithEmailAndPass, signinWithGoogle } from "../services/firebase/firebase";
+import { auth, isAdmin, signinWithEmailAndPass, signinWithGoogle } from "../services/firebase/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 
 export const UserCtx = createContext(null);
 
 export function UserProvider({children}) {
   const [currentUser, setCurrentUser] = useState(null);
+  const [isUserAdmin, setIsUserAdmin] = useState(false);
 
   useEffect(()=> {
-    onAuthStateChanged(auth, (user)=> {
+    onAuthStateChanged(auth, async(user)=> {
       setCurrentUser(user || null);
+      const result = await isAdmin(user.uid);
+      setIsUserAdmin(result);
     });
   }, []);
 
@@ -23,7 +26,7 @@ export function UserProvider({children}) {
     signOut(auth);
   }
 
-  return <UserCtx.Provider value={{currentUser, signIn, logOut, signInWithEmail }} >
+  return <UserCtx.Provider value={{currentUser, signIn, logOut, signInWithEmail, isUserAdmin }} >
     {children}
   </UserCtx.Provider>
 }

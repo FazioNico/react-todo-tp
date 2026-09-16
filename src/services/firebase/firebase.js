@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "./firebase.config";
-import { getDatabase, push, ref } from "firebase/database";
+import { get, getDatabase, push, ref } from "firebase/database";
 import { EmailAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -31,4 +31,10 @@ export const signinWithEmailAndPass = async (email, pass) => {
   console.log(email, pass)
   const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
   return userCredential.user;
+}
+
+export const isAdmin = async (userId) => {
+  const collection = ref(database, 'userAdmin');
+  const admin = await get(collection).then(snap => snap.val());
+  return admin[userId] ? true : false;
 }

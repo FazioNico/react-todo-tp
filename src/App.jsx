@@ -6,11 +6,11 @@ import { UserCtx } from './contextes/user.context';
 function App() {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
-  const { currentUser, signIn, logOut, signInWithEmail } = useContext(UserCtx);
+  const { currentUser, signIn, logOut, signInWithEmail, isUserAdmin } = useContext(UserCtx);
 
   return (
     <>
-      <p>currentUser: {currentUser?.email || 'no user'}</p>
+      <p>currentUser: {currentUser?.email || 'no user'} is Admin: {isUserAdmin ? 'true' : 'false'}</p>
       <input type="text" onKeyUp={(event) => setEmail(event.target.value)} />
       <input type="text" onKeyUp={(event) => setPass(event.target.value)} />
       <button onClick={()=> signInWithEmail(email, pass)}>auth with Email</button>
