@@ -1,15 +1,20 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { addToFirebase, collection } from "../services/firebase/firebase";
-import { onValue } from "firebase/database";
+import { child, onValue } from "firebase/database";
+import { UserCtx } from "./user.context";
 
 export const TodosCtx = createContext([]);
 
 export function TodosProvider({ children }) {
   const [todosList, setTodosList] = useState([]);
+  const { currentUser } = useContext(UserCtx);
 
   // realtime data from firebase
   useEffect(() => {
-    onValue(collection, (snap)=> {
+    if (!currentUser?.uid) {
+      return;
+    }
+    onValue(child(collection, currentUser.uid), (snap)=> {
       const todosObject = snap.val();
       const todoArray = Object.entries(todosObject).map(([id, todo]) => ({
         id,
@@ -18,7 +23,7 @@ export function TodosProvider({ children }) {
       console.log(todoArray)
       setTodosList(todoArray); 
     })
-  }, []);
+  }, [currentUser]);
 
   return (
     <TodosCtx.Provider value={{ todosList, addToFirebase, }}>

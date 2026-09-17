@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "./firebase.config";
-import { get, getDatabase, push, ref } from "firebase/database";
+import { child, get, getDatabase, push, ref } from "firebase/database";
 import { EmailAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -14,8 +14,8 @@ export const auth = getAuth(app);
 
 export const collection = ref(database, 'tp-todos-react');
 
-export const addToFirebase = async (title) => {
-  await push(collection, {
+export const addToFirebase = async (uid, title) => {
+  await push(child(collection, uid), {
     title,
     createAt: new Date().toISOString()
   });
