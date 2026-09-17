@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { auth, isAdmin, signinWithEmailAndPass, signinWithGoogle } from "../services/firebase/firebase";
+import { auth, isAdmin, signinAsAnonymous, signinWithEmailAndPass, signinWithGoogle } from "../services/firebase/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 
 export const UserCtx = createContext(null);
@@ -9,7 +9,11 @@ export function UserProvider({children}) {
   const [isUserAdmin, setIsUserAdmin] = useState(false);
 
   useEffect(()=> {
+    // default signin anonym
+    signinAsAnonymous();
+
     onAuthStateChanged(auth, async(user)=> {
+      console.log(user)
       setCurrentUser(user || null);
       if (!user) {
         return;
