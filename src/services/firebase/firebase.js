@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "./firebase.config";
 import { child, get, getDatabase, push, ref } from "firebase/database";
 import { EmailAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword, signInAnonymously } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -11,6 +12,7 @@ import { EmailAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassw
 const app = initializeApp(firebaseConfig);
 export const database = getDatabase(app);
 export const auth = getAuth(app);
+export const storage = getStorage(app);
 
 export const collection = ref(database, 'tp-todos-react');
 
