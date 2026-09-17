@@ -11,6 +11,9 @@ export function UserProvider({children}) {
   useEffect(()=> {
     onAuthStateChanged(auth, async(user)=> {
       setCurrentUser(user || null);
+      if (!user) {
+        return;
+      }
       const result = await isAdmin(user.uid);
       setIsUserAdmin(result);
     });
