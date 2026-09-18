@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "docs": "node scripts/docs.js"
+    "docs": "node scripts/docs.js",
+    "test": "vitest"
   },
   "dependencies": {
     "compressorjs": "^1.3.0",
@@ -23,6 +24,7 @@
     "glob": "^13.0.6",
     "jsdoc": "^4.0.5",
     "oxlint": "^1.81.0",
-    "vite": "^8.3.0"
+    "vite": "^8.3.0",
+    "vitest": "^4.1.11"
   }
 }
