@@ -1,142 +1,150 @@
 # 📝 React Todo App
 
-Une application de gestion des tâches (Todo) construite avec React et Vite, intégrée avec Firebase pour l'authentification et le stockage des données. L'application offre des fonctionnalités de gestion des fichiers avec compression d'images et une authentification multi-méthode.
+A task management application (Todo) built with React and Vite, integrated with Firebase for authentication and data storage. The application offers file management features with image compression and multi-method authentication.
 
 ---
 
-## 📋 Table des matières
+## 📋 Table of Contents
 
 - [Installation](#installation)
-- [Stack technique](#stack-technique)
+- [Tech Stack](#tech-stack)
 - [Usage](#usage)
-- [Fonctionnalités](#fonctionnalités)
-- [Structure du projet](#structure-du-projet)
+- [Features](#features)
+- [Project Structure](#project-structure)
 - [Configuration](#configuration)
-- [Scripts disponibles](#scripts-disponibles)
+- [Available Scripts](#available-scripts)
 - [Documentation](#documentation)
-- [Contribution](#contribution)
-- [Licence](#licence)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
 ## 🚀 Installation
 
-### Prérequis
+### Prerequisites
 
 - Node.js (v18+)
-- npm ou yarn
+- npm or yarn
 
-### Étapes d'installation
+### Installation Steps
 
-1. **Cloner le repository**
+1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd react-todo-tp
    ```
 
-2. **Installer les dépendances**
+2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
-3. **Configurer Firebase** (voir [Configuration](#configuration))
+3. **Configure Firebase** (see [Configuration](#configuration))
+
    ```bash
-   # Ajouter vos clés Firebase dans src/services/firebase/firebase.config.js
+   # Add your Firebase keys in src/services/firebase/firebase.config.js
    ```
 
-4. **Démarrer le serveur de développement**
+4. **Start the development server**
+
    ```bash
    npm run dev
    ```
 
-L'application sera disponible à `http://localhost:5173`
+The application will be available at `http://localhost:5173`
 
 ---
 
-## 🛠️ Stack technique
+## 🛠️ Tech Stack
 
 ### Frontend
-- **React** 19.2.8 - Bibliothèque UI
-- **Vite** 8.3.0 - Build tool et dev server
-- **CSS** - Stylisation native
+
+- **React** 19.2.8 - UI library
+- **Vite** 8.3.0 - Build tool and dev server
+- **CSS** - Native styling
 
 ### Backend & Services
-- **Firebase** 12.19.0 - Authentication, Firestore & Storage
-- **Compressor.js** 1.3.0 - Compression d'images côté client
 
-### Outils de développement
-- **Oxlint** 1.81.0 - Linter JavaScript performant
-- **JSDoc** 4.0.5 - Documentation du code
-- **TypeScript types** - Support des types React
+- **Firebase** 12.19.0 - Authentication, Firestore & Storage
+- **Compressor.js** 1.3.0 - Client-side image compression
+
+### Development Tools
+
+- **Oxlint** 1.81.0 - Fast JavaScript linter
+- **JSDoc** 4.0.5 - Code documentation
+- **TypeScript types** - React type support
 
 ---
 
 ## 💡 Usage
 
-### Démarrage rapide
+### Quick Start
 
-1. **Développement**
+1. **Development**
+
    ```bash
    npm run dev
    ```
 
-2. **Authentification**
-   - L'application supporte plusieurs méthodes d'authentification :
+2. **Authentication**
+   - The application supports multiple authentication methods:
      - Google Sign-In
      - Email/Password
-     - Authentification anonyme
+     - Anonymous authentication
 
-3. **Gestion des Todos**
-   - Créer une nouvelle tâche via le formulaire
-   - Voir la liste de vos tâches
-   - Les données sont synchronisées avec Firebase
+3. **Todo Management**
+   - Create a new task via the form
+   - View your list of tasks
+   - Data is synchronized with Firebase
 
-4. **Upload de fichiers**
-   - Utilisez le composant `UploadFile` pour charger des images
-   - Les fichiers sont automatiquement compressés avant l'upload
-
----
-
-## ✨ Fonctionnalités
-
-- ✅ **Authentification flexible** - Google, Email/Password, Anonyme
-- ✅ **Gestion des Todos** - Créer et visualiser des tâches
-- ✅ **Stockage cloud** - Firebase Firestore pour la persistance
-- ✅ **Upload de fichiers** - Avec compression automatique des images
-- ✅ **Contextes React** - Gestion d'état centralisée (Todos, User)
-- ✅ **Vérification d'admin** - Support des rôles administrateur
-- ✅ **Synchronisation en temps réel** - via Firebase
+4. **File Upload**
+   - Use the `UploadFile` component to upload images
+   - Files are automatically compressed before upload
 
 ---
 
-## 📁 Structure du projet
+## ✨ Features
+
+- ✅ **Flexible Authentication** - Google, Email/Password, Anonymous
+- ✅ **Todo Management** - Create and view tasks
+- ✅ **Cloud Storage** - Firebase Firestore for data persistence
+- ✅ **File Upload** - With automatic image compression
+- ✅ **React Contexts** - Centralized state management (Todos, User)
+- ✅ **Admin Verification** - Admin role support
+- ✅ **Real-time Synchronization** - via Firebase
+
+---
+
+## 📁 Project Structure
 
 ```
 react-todo-tp/
 ├── src/
 │   ├── components/
-│   │   ├── TodoForm.jsx        # Formulaire de création de todo
-│   │   ├── TodosList.jsx       # Affichage de la liste des todos
-│   │   └── UploadFile.jsx      # Composant d'upload de fichiers
+│   │   ├── TodoForm.jsx        # Todo creation form
+│   │   ├── TodosList.jsx       # Todo list display
+│   │   └── UploadFile.jsx      # File upload component
 │   ├── contextes/
-│   │   ├── todos.context.jsx   # Contexte pour la gestion des todos
-│   │   └── user.context.jsx    # Contexte pour l'authentification
+│   │   ├── todos.context.jsx   # Context for todo management
+│   │   └── user.context.jsx    # Context for authentication
 │   ├── services/
 │   │   └── firebase/
-│   │       ├── firebase.config.js  # Configuration Firebase
-│   │       └── firebase.js         # Fonctions Firebase
-│   ├── assets/                 # Images et ressources statiques
-│   ├── App.jsx                 # Composant principal
-│   ├── App.css                 # Styles globaux
-│   ├── index.css              # Styles de base
-│   └── main.jsx               # Point d'entrée React
-├── public/                     # Fichiers statiques
+│   │       ├── firebase.config.js  # Firebase configuration
+│   │       └── firebase.js         # Firebase functions
+│   ├── assets/                 # Images and static resources
+│   ├── App.jsx                 # Main component
+│   ├── App.css                 # Global styles
+│   ├── index.css               # Base styles
+│   └── main.jsx                # React entry point
+├── public/                     # Static files
 ├── scripts/
-│   └── docs.js                # Script de génération de documentation
-├── vite.config.js             # Configuration Vite
-├── .oxlintrc.json             # Configuration Oxlint
-├── index.html                 # Template HTML
-└── package.json               # Dépendances et scripts
+│   └── docs.js                 # Documentation generation script
+├── vite.config.js              # Vite configuration
+├── .oxlintrc.json              # Oxlint configuration
+├── index.html                  # HTML template
+└── package.json                # Dependencies and scripts
 ```
 
 ---
@@ -145,9 +153,10 @@ react-todo-tp/
 
 ### Firebase
 
-1. **Créer un projet Firebase** sur [firebase.google.com](https://firebase.google.com)
+1. **Create a Firebase project** on [firebase.google.com](https://firebase.google.com)
 
-2. **Ajouter vos clés** dans `src/services/firebase/firebase.config.js` :
+2. **Add your keys** in `src/services/firebase/firebase.config.js`:
+
    ```javascript
    export const firebaseConfig = {
      apiKey: "YOUR_API_KEY",
@@ -159,14 +168,15 @@ react-todo-tp/
    };
    ```
 
-3. **Activer les services Firebase** :
+3. **Enable Firebase services**:
    - Authentication (Email/Password, Google)
    - Firestore Database
    - Storage
 
-### Variables d'environnement
+### Environment Variables
 
-Créez un fichier `.env.local` à la racine du projet (non versionné) :
+Create a `.env.local` file at the project root (not versioned):
+
 ```
 VITE_FIREBASE_API_KEY=...
 VITE_FIREBASE_AUTH_DOMAIN=...
@@ -175,69 +185,69 @@ VITE_FIREBASE_AUTH_DOMAIN=...
 
 ---
 
-## 📦 Scripts disponibles
+## 📦 Available Scripts
 
 | Script | Description |
-|--------|-------------|
-| `npm run dev` | Démarre le serveur de développement |
-| `npm run build` | Construit l'application pour la production |
-| `npm run preview` | Prévisualise la build production |
-| `npm run lint` | Lance Oxlint pour vérifier le code |
-| `npm run docs` | Génère la documentation JSDoc |
+| --- | --- |
+| `npm run dev` | Start the development server |
+| `npm run build` | Build the application for production |
+| `npm run preview` | Preview the production build |
+| `npm run lint` | Run Oxlint to check code |
+| `npm run docs` | Generate JSDoc documentation |
 
 ---
 
 ## 📚 Documentation
 
-### Génération de la documentation
+### Generate Documentation
 
 ```bash
 npm run docs
 ```
 
-La documentation JSDoc est générée dans le répertoire `out/`.
+JSDoc documentation is generated in the `out/` directory.
 
-### Principes de documentation
+### Documentation Principles
 
-- **JSDoc comments** sur les fonctions et composants
-- **Authentification** : voir [Marketing Docs](./marketing/docs/authentication.md)
-- **Firebase** : voir [Marketing Docs](./marketing/docs/firebase.md)
-- **Troubleshooting** : voir [Marketing Docs](./marketing/docs/troubleshooting.md)
-
----
-
-## 🤝 Contribution
-
-Les contributions sont bienvenues ! Pour contribuer :
-
-1. Fork le repository
-2. Créer une branche (`git checkout -b feature/amazing-feature`)
-3. Commiter vos changements (`git commit -m 'feat: add amazing feature'`)
-4. Push vers la branche (`git push origin feature/amazing-feature`)
-5. Ouvrir une Pull Request
-
-### Standards de code
-
-- Respecter les règles **Oxlint** : `npm run lint`
-- Ajouter des commentaires JSDoc pour les nouvelles fonctions
-- Suivre les conventions de nommage React
+- **JSDoc comments** on functions and components
+- **Authentication**: see [Marketing Docs](./marketing/docs/authentication.md)
+- **Firebase**: see [Marketing Docs](./marketing/docs/firebase.md)
+- **Troubleshooting**: see [Marketing Docs](./marketing/docs/troubleshooting.md)
 
 ---
 
-## 📄 Licence
+## 🤝 Contributing
 
-Ce projet est sous licence **MIT**. Voir le fichier [LICENSE](./LICENSE) pour plus de détails.
+Contributions are welcome! To contribute:
+
+1. Fork the repository
+2. Create a branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Code Standards
+
+- Follow **Oxlint** rules: `npm run lint`
+- Add JSDoc comments for new functions
+- Follow React naming conventions
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for more details.
 
 ---
 
 ## 📞 Support
 
-Pour des questions ou des problèmes :
+For questions or issues:
 
-- Consulter la [documentation Firebase](./marketing/docs/firebase.md)
-- Voir le [guide de troubleshooting](./marketing/docs/troubleshooting.md)
-- Ouvrir une issue sur le repository
+- Check the [Firebase documentation](./marketing/docs/firebase.md)
+- See the [troubleshooting guide](./marketing/docs/troubleshooting.md)
+- Open an issue on the repository
 
 ---
 
-**Créé avec ❤️ par FazioNico**
+**Created with ❤️ by FazioNico**
