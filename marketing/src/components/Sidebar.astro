@@ -1,0 +1,114 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+
+const docs = [
+  { title: 'Accueil', href: '/', icon: '🏠' },
+  {
+    title: 'Guide',
+    items: [
+      { title: 'Introduction', href: '/docs/introduction', icon: '📖' },
+      { title: 'Installation', href: '/docs/installation', icon: '🚀' },
+      { title: 'Configuration', href: '/docs/configuration', icon: '⚙️' },
+    ],
+  },
+  {
+    title: 'Architecture',
+    items: [
+      { title: 'Vue d\'ensemble', href: '/docs/architecture/overview', icon: '🏗️' },
+      { title: 'Structure du projet', href: '/docs/architecture/structure', icon: '📁' },
+      { title: 'Contextes React', href: '/docs/architecture/contexts', icon: '⚛️' },
+    ],
+  },
+  {
+    title: 'Composants',
+    items: [
+      { title: 'App', href: '/docs/components/app', icon: '📱' },
+      { title: 'TodoForm', href: '/docs/components/todo-form', icon: '✏️' },
+      { title: 'TodosList', href: '/docs/components/todos-list', icon: '📋' },
+      { title: 'UploadFile', href: '/docs/components/upload-file', icon: '📤' },
+    ],
+  },
+  {
+    title: 'Services',
+    items: [
+      { title: 'Firebase', href: '/docs/services/firebase', icon: '🔥' },
+      { title: 'Authentification', href: '/docs/services/authentication', icon: '🔐' },
+    ],
+  },
+  {
+    title: 'Contextes',
+    items: [
+      { title: 'UserContext', href: '/docs/contexts/user-context', icon: '👤' },
+      { title: 'TodosContext', href: '/docs/contexts/todos-context', icon: '✅' },
+    ],
+  },
+  {
+    title: 'Ressources',
+    items: [
+      { title: 'FAQ', href: '/docs/resources/faq', icon: '❓' },
+      { title: 'Troubleshooting', href: '/docs/resources/troubleshooting', icon: '🔧' },
+      { title: 'API Reference', href: '/docs/resources/api-reference', icon: '📚' },
+    ],
+  },
+];
+
+const isActive = (href: string) => {
+  if (href === '/') return pathname === '/';
+  return pathname.startsWith(href);
+};
+---
+
+<aside class="fixed left-0 top-0 w-64 h-screen bg-sidebar border-r border-gray-200 overflow-y-auto hidden lg:block">
+  <div class="sticky top-0 bg-white bg-opacity-95 border-b border-gray-200 p-6">
+    <a href="/" class="flex items-center gap-2">
+      <div class="text-2xl">📝</div>
+      <div class="flex flex-col">
+        <h1 class="text-lg font-bold text-gray-900">React Todo</h1>
+        <p class="text-xs text-gray-500">Documentation</p>
+      </div>
+    </a>
+  </div>
+
+  <nav class="p-6">
+    {docs.map((section) => (
+      <div class="mb-8">
+        {section.items ? (
+          <>
+            <h3 class="text-xs font-semibold text-gray-700 uppercase tracking-wider mb-3 px-2">
+              {section.title}
+            </h3>
+            <ul class="space-y-2">
+              {section.items.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class={`flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors ${
+                      isActive(item.href)
+                        ? 'bg-primary text-white font-medium'
+                        : 'text-gray-700 hover:bg-sidebar-hover'
+                    }`}
+                  >
+                    <span>{item.icon}</span>
+                    {item.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : (
+          <a
+            href={section.href}
+            class={`flex items-center gap-2 px-3 py-2 rounded-md font-medium transition-colors ${
+              isActive(section.href)
+                ? 'text-primary bg-blue-50'
+                : 'text-gray-700 hover:bg-sidebar-hover'
+            }`}
+          >
+            <span>{section.icon}</span>
+            {section.title}
+          </a>
+        )}
+      </div>
+    ))}
+  </nav>
+</aside>

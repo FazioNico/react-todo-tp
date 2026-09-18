@@ -1,0 +1,109 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="min-h-screen flex bg-white">
+    {/* Sidebar */}
+    <Sidebar />
+
+    {/* Main content */}
+    <div class="flex-1 lg:ml-64">
+      <div class="flex">
+        {/* Content area */}
+        <div class="flex-1 min-w-0 px-6 py-8 lg:px-8">
+          <article class="prose prose-sm md:prose lg:prose-lg max-w-4xl mx-auto">
+            <h1 class="text-4xl font-bold mb-4">{title}</h1>
+            {description && <p class="text-lg text-gray-600 mb-8">{description}</p>}
+            <slot />
+          </article>
+          {/* Navigation */}
+          <div class="mt-12 pt-8 border-t border-gray-200 flex justify-between">
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+
+        {/* Table of contents */}
+        <TableOfContents />
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  :global(.prose) {
+    --tw-prose-body: #1a1a1a;
+    --tw-prose-headings: #1a1a1a;
+    --tw-prose-links: #0070f3;
+    --tw-prose-bold: #1a1a1a;
+    --tw-prose-counters: #666;
+    --tw-prose-bullets: #ddd;
+    --tw-prose-hr: #eaeaea;
+    --tw-prose-quotes: #666;
+    --tw-prose-quote-borders: #0070f3;
+    --tw-prose-captions: #666;
+    --tw-prose-code: #d63384;
+    --tw-prose-pre-code: #abb2bf;
+    --tw-prose-pre-bg: #282c34;
+    --tw-prose-th-borders: #ddd;
+    --tw-prose-td-borders: #eaeaea;
+  }
+
+  :global(.prose a) {
+    color: #0070f3;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 112, 243, 0.3);
+    transition: all 0.2s;
+  }
+
+  :global(.prose a:hover) {
+    border-bottom-color: #0070f3;
+  }
+
+  :global(.prose code) {
+    color: #d63384;
+    font-weight: 500;
+  }
+
+  :global(.prose pre) {
+    background-color: #282c34;
+    border: 1px solid #3e4451;
+  }
+
+  :global(.prose h2) {
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+    padding-top: 1em;
+    border-top: 1px solid #eaeaea;
+  }
+
+  :global(.prose h3) {
+    margin-top: 1.5em;
+  }
+
+  :global(.prose ul) {
+    padding-left: 1.5em;
+  }
+
+  :global(.prose li) {
+    margin-top: 0.5em;
+  }
+
+  :global(.prose blockquote) {
+    border-left: 4px solid #0070f3;
+    color: #666;
+    margin: 1em 0;
+    padding-left: 1em;
+  }
+</style>

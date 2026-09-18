@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+
+<BaseLayout title="React Todo App - Documentation">
+  <div class="min-h-screen flex bg-white">
+    <Sidebar />
+
+    <div class="flex-1 lg:ml-64">
+      <div class="px-6 py-16 lg:px-12">
+        <div class="max-w-4xl">
+          {/* Hero */}
+          <div class="mb-16">
+            <div class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
+              📝 Documentation
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
+              React Todo App
+            </h1>
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl">
+              Une application de gestion de tâches moderne construite avec React, Vite et Firebase.
+              Authentification intégrée, sauvegarde en temps réel et interface réactive.
+            </p>
+
+            <div class="flex gap-4">
+              <a
+                href="/docs/introduction"
+                class="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-600 transition-colors"
+              >
+                Démarrer →
+              </a>
+              <a
+                href="/docs/architecture/overview"
+                class="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+              >
+                Architecture
+              </a>
+            </div>
+          </div>
+
+          {/* Features */}
+          <div class="grid md:grid-cols-3 gap-8 mb-16">
+            <div class="border border-gray-200 rounded-lg p-6">
+              <div class="text-3xl mb-3">⚛️</div>
+              <h3 class="text-lg font-semibold mb-2">React Moderne</h3>
+              <p class="text-gray-600">
+                Construit avec React 19 et les derniers hooks
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <div class="text-3xl mb-3">🔥</div>
+              <h3 class="text-lg font-semibold mb-2">Firebase</h3>
+              <p class="text-gray-600">
+                Base de données temps réel et authentification
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <div class="text-3xl mb-3">⚡</div>
+              <h3 class="text-lg font-semibold mb-2">Vite</h3>
+              <p class="text-gray-600">
+                Build ultra-rapide et HMR instantané
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <div class="text-3xl mb-3">🔐</div>
+              <h3 class="text-lg font-semibold mb-2">Sécurisé</h3>
+              <p class="text-gray-600">
+                Authentification Email, Google et Anonyme
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <div class="text-3xl mb-3">💾</div>
+              <h3 class="text-lg font-semibold mb-2">Persistant</h3>
+              <p class="text-gray-600">
+                Synchronisation en temps réel avec Firebase
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <div class="text-3xl mb-3">📤</div>
+              <h3 class="text-lg font-semibold mb-2">Upload</h3>
+              <p class="text-gray-600">
+                Téléchargement de fichiers avec compression
+              </p>
+            </div>
+          </div>
+
+          {/* Quick start */}
+          <div class="bg-gray-50 rounded-lg p-8 mb-16">
+            <h2 class="text-2xl font-bold mb-4">Démarrage rapide</h2>
+            <div class="space-y-4">
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-primary text-white font-bold">
+                  1
+                </div>
+                <div>
+                  <h3 class="font-semibold">Cloner le repository</h3>
+                  <code class="text-sm bg-white px-3 py-1 rounded border border-gray-200 inline-block mt-2">
+                    git clone &lt;repository&gt;
+                  </code>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-primary text-white font-bold">
+                  2
+                </div>
+                <div>
+                  <h3 class="font-semibold">Installer les dépendances</h3>
+                  <code class="text-sm bg-white px-3 py-1 rounded border border-gray-200 inline-block mt-2">
+                    npm install
+                  </code>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-primary text-white font-bold">
+                  3
+                </div>
+                <div>
+                  <h3 class="font-semibold">Configurer Firebase</h3>
+                  <p class="text-sm text-gray-600 mt-1">Voir <a href="/docs/configuration" class="text-primary">Configuration</a></p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-primary text-white font-bold">
+                  4
+                </div>
+                <div>
+                  <h3 class="font-semibold">Lancer le serveur</h3>
+                  <code class="text-sm bg-white px-3 py-1 rounded border border-gray-200 inline-block mt-2">
+                    npm run dev
+                  </code>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Tech Stack */}
+          <div class="mb-16">
+            <h2 class="text-2xl font-bold mb-6">Stack Technologique</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h3 class="font-semibold mb-3">Frontend</h3>
+                <ul class="space-y-2 text-gray-600">
+                  <li>• React 19</li>
+                  <li>• Vite 8</li>
+                  <li>• JSX/ES6+</li>
+                  <li>• Context API</li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-3">Backend & Services</h3>
+                <ul class="space-y-2 text-gray-600">
+                  <li>• Firebase Realtime Database</li>
+                  <li>• Firebase Authentication</li>
+                  <li>• Firebase Storage</li>
+                  <li>• Compressor.js</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-8 text-center">
+            <h2 class="text-2xl font-bold mb-4">Prêt à explorer ?</h2>
+            <p class="text-gray-600 mb-6">
+              Commencez par lire l'introduction et la structure du projet
+            </p>
+            <a
+              href="/docs/introduction"
+              class="inline-block bg-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-600 transition-colors"
+            >
+              Lire la documentation
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+</style>
