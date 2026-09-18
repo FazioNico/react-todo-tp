@@ -14,8 +14,27 @@ export const database = getDatabase(app);
 export const auth = getAuth(app);
 export const storage = getStorage(app);
 
+/**
+ * Main Fireebase Collection for Todos
+ * Do not forget to use child() from Firebase Realtime Database to target correct user collection
+ * @example
+ * ```
+ * const userCollection = child(collection, 'userID');
+ * const result = await get(userCollection);
+ * ```
+ */
 export const collection = ref(database, 'tp-todos-react');
 
+/**
+ * Function to save new Todo into Firebase Realtime Database
+ * using UID (user ID) ans todo title as params
+ * @param {*} uid Unique User ID
+ * @param {*} title Todo Title
+ * @example
+ * ```
+ * const result = await addToFirebase('001', 'new Todo');
+ * ```
+ */
 export const addToFirebase = async (uid, title) => {
   await push(child(collection, uid), {
     title,
